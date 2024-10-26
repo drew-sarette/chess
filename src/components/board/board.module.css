@@ -1,11 +1,48 @@
-.base {
-    box-sizing: border-box;
-    display: grid;
-    grid-template-columns: repeat(8, 1fr);
-    grid-template-rows: repeat(8, 1fr);
-    gap: 1px;
+.board {
+    display: flex;
+    flex-direction: column-reverse;
     aspect-ratio: 1;
     min-height: 100%;
     border: 1px solid black;
     background-color: #fff;
+}
+
+.rank {
+    display: flex;
+    flex-grow: 1;
+    width: 100%;
+}
+
+.rank div {
+    flex-grow: 1;
+}
+
+/* White perspective board styles */
+.board> :nth-child(odd)> :nth-child(odd),
+.board> :nth-child(even)> :nth-child(even) {
+    background-color: #964b00;
+}
+
+.board> :nth-child(odd)> :nth-child(even),
+.board> :nth-child(even)> :nth-child(odd) {
+    background-color: #f5deb3;
+}
+
+/* Black perspective board styles */
+.board-reverse {
+    flex-direction: column;
+}
+
+.rank-reverse {
+    flex-direction: row-reverse;
+}
+
+.board-reverse> :nth-child(odd)> :nth-child(odd),
+.board-reverse> :nth-child(even)> :nth-child(even) {
+    background-color: #964b00;
+}
+
+.board-reverse> :nth-child(odd)> :nth-child(even),
+.board-reverse> :nth-child(even)> :nth-child(odd) {
+    background-color: #f5deb3;
 }
