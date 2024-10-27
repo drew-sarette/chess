@@ -53,29 +53,7 @@
   background-position: -533.33px -213px;
 }
 
-.empty {
-  background-image: none;
-}
-
-.dark {
-  background-color: #964b00;
-}
-
-.light {
-  background-color: #f5deb3;
-}
-
 .selected {
-  filter: brightness(1.2) contrast(1.2) saturate(1.2);
-  box-shadow: 0 0 10px rgba(255, 255, 0, 0.5);
-}
-
-.selected-dark {
-  filter: brightness(0.8) contrast(1.2) saturate(1.2);
-  box-shadow: 0 0 10px rgba(255, 255, 0, 0.5);
-}
-
-.selected-light {
   filter: brightness(1.2) contrast(1.2) saturate(1.2);
   box-shadow: 0 0 10px rgba(255, 255, 0, 0.5);
 }
