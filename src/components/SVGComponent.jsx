@@ -20,7 +20,6 @@ const SVGComponent = () => (
           strokeDasharray: "none",
           strokeOpacity: 1,
         }}
-        transform="translate(0,0)"
       >
         <path
           d="M 22.5,11.63 L 22.5,6"
@@ -92,7 +91,6 @@ const SVGComponent = () => (
           strokeDasharray: "none",
           strokeOpacity: 1,
         }}
-        transform="translate(45,0)"
       >
         <path
           d="M 9 13 A 2 2 0 1 1  5,13 A 2 2 0 1 1  9 13 z"
@@ -155,7 +153,6 @@ const SVGComponent = () => (
           strokeDasharray: "none",
           strokeOpacity: 1,
         }}
-        transform="translate(90,0)"
       >
         <g
           style={{
@@ -193,7 +190,6 @@ const SVGComponent = () => (
           strokeDasharray: "none",
           strokeOpacity: 1,
         }}
-        transform="translate(135,0)"
       >
         <path
           d="M 22,10 C 32.5,11 38.5,18 38,39 L 15,39 C 15,30 25,32.5 23,18"
@@ -241,7 +237,6 @@ const SVGComponent = () => (
           strokeDasharray: "none",
           strokeOpacity: 1,
         }}
-        transform="translate(180,0)"
       >
         <path
           d="M 9,39 L 36,39 L 36,36 L 9,36 L 9,39 z "
@@ -281,7 +276,7 @@ const SVGComponent = () => (
       </g>
     </symbol>
     <symbol id="whitepawn">
-      <g transform="translate(225,0)">
+      <g>
         <path
           d="M 22,9 C 19.79,9 18,10.79 18,13 C 18,13.89 18.29,14.71 18.78,15.38 C 16.83,16.5 15.5,18.59 15.5,21 C 15.5,23.03 16.44,24.84 17.91,26.03 C 14.91,27.09 10.5,31.58 10.5,39.5 L 33.5,39.5 C 33.5,31.58 29.09,27.09 26.09,26.03 C 27.56,24.84 28.5,23.03 28.5,21 C 28.5,18.59 27.17,16.5 25.22,15.38 C 25.71,14.71 26,13.89 26,13 C 26,10.79 24.21,9 22,9 z "
           style={{
@@ -314,7 +309,6 @@ const SVGComponent = () => (
           strokeDasharray: "none",
           strokeOpacity: 1,
         }}
-        transform="translate(0,45)"
       >
         <path
           d="M 22.5,11.63 L 22.5,6"
@@ -379,7 +373,6 @@ const SVGComponent = () => (
           strokeDasharray: "none",
           strokeOpacity: 1,
         }}
-        transform="translate(45,45)"
       >
         <g
           style={{
@@ -459,7 +452,6 @@ const SVGComponent = () => (
           strokeDasharray: "none",
           strokeOpacity: 1,
         }}
-        transform="translate(90,45)"
       >
         <g
           style={{
@@ -497,7 +489,6 @@ const SVGComponent = () => (
           strokeDasharray: "none",
           strokeOpacity: 1,
         }}
-        transform="translate(135,45)"
       >
         <path
           d="M 22,10 C 32.5,11 38.5,18 38,39 L 15,39 C 15,30 25,32.5 23,18"
@@ -552,7 +543,6 @@ const SVGComponent = () => (
           strokeDasharray: "none",
           strokeOpacity: 1,
         }}
-        transform="translate(180,45)"
       >
         <path
           d="M 9,39 L 36,39 L 36,36 L 9,36 L 9,39 z "
@@ -639,7 +629,7 @@ const SVGComponent = () => (
       </g>
     </symbol>
     <symbol id="blackpawn">
-      <g transform="translate(225,45)">
+      <g>
         <path
           d="M 22,9 C 19.79,9 18,10.79 18,13 C 18,13.89 18.29,14.71 18.78,15.38 C 16.83,16.5 15.5,18.59 15.5,21 C 15.5,23.03 16.44,24.84 17.91,26.03 C 14.91,27.09 10.5,31.58 10.5,39.5 L 33.5,39.5 C 33.5,31.58 29.09,27.09 26.09,26.03 C 27.56,24.84 28.5,23.03 28.5,21 C 28.5,18.59 27.17,16.5 25.22,15.38 C 25.71,14.71 26,13.89 26,13 C 26,10.79 24.21,9 22,9 z "
           style={{
