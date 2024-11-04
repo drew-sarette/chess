@@ -1,17 +1,18 @@
-import css from './game.module.css'
-import { classy } from '/src/lib/utils.js'
-
-import Board from './board/Board'
-import Info from './info/Info'
+import { useState } from "react";
+import Board from "./Board";
+import Info from "./Info";
+import { startPosition } from "../lib/chess";
+import SVGComponent from "./SVGComponent";
 
 function Game() {
-    
-    return (
-        <div className={classy(css, 'base')}>
-          <Board />
-          <Info />
-        </div>
-    )
+  const [history, setHistory] = useState([startPosition]);
 
+  return (
+    <div className="h-[500px] w-full flex">
+      <Board position={history[0]}/>
+      <Info />
+      <SVGComponent />
+    </div>
+  );
 }
-export default Game
+export default Game;
