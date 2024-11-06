@@ -1,4 +1,3 @@
-import { getNotation } from "../lib/chess.js";
 import clsx from "clsx";
 
 function Square({ coord, onClick, piece, selected }) {
