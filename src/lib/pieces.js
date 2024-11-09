@@ -2,47 +2,47 @@ import Board from "./board";
 import Chess from "./chess";
 
 class Piece {
-    #color;
-    #hasMoved = false;
-    #name;
-    #short;
+    color;
+    hasMoved = false;
+    name;
+    short;
     constructor(color, coord) {
-      this.#color = color;
+      this.color = color;
       this.coord = coord;
     }
   
     get color() {
-      return this.#color;
+      return this.color;
     }
   
     get hasMoved() {
-      return this.#hasMoved;
+      return this.hasMoved;
     }
     set hasMoved(value) {
-        this.#hasMoved = value;
+        this.hasMoved = value;
     }
   
     get short() {
-      return this.#short;
+      return this.short;
     }
   
     set short(short) {
-      if (!this.#short) {
-        this.#short = short;
+      if (!this.short) {
+        this.short = short;
       }
     }
     get name() {
-      return this.#name;
+      return this.name;
     }
   
     set name(name) {
-      if (!this.#name) {
-        this.#name = name;
+      if (!this.name) {
+        this.name = name;
       }
     }
   
     move(target) {
-      this.#hasMoved = true;
+      this.hasMoved = true;
       this.coord = target;
     }
   

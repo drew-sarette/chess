@@ -10,7 +10,9 @@ export default class Chess {
   }
 
   get position() {
-    return this.#history[0];
+    // Return a copy of the current position.
+    return JSON.parse(JSON.stringify(this.#history[0]));
+
   }
 
   get whosNext() {
@@ -25,13 +27,24 @@ export default class Chess {
     this.viewing = moveNumber;
   }
 
+  moveNew(selected, target, sideEffects) {
+    const newPosition = null;
+
+    return this;
+  }
+
   move(selected, target) {
     const piece = this.position[selected[0]][selected[1]];
-    if (piece instanceof Pawn && piece.enPassant && piece.enPassant.validTurn === this.#history.length){
+    if (
+      piece instanceof Pawn &&
+      piece.enPassant &&
+      piece.enPassant.validTurn === this.#history.length
+    ) {
       const passantSquare = piece.enPassant.passantSquare;
       if (target[0] === passantSquare[0] && target[1] === passantSquare[1]) {
         const newPosition = this.position.slice();
-        newPosition[target[0]][target[1]] = newPosition[selected[0]][selected[1]];
+        newPosition[target[0]][target[1]] =
+          newPosition[selected[0]][selected[1]];
         newPosition[target[0] - piece.direction][target[1]] = null;
         this.#history.push(newPosition);
         this.#whosNext = this.#whosNext === "white" ? "black" : "white";
@@ -54,13 +67,23 @@ export default class Chess {
       this.view = this.#history.length;
       piece.move(target);
       if (piece instanceof Pawn && Math.abs(target[0] - selected[0]) === 2) {
-        const neighborPieces = [this.position[target[0]][target[1] + 1], this.position[target[0]][target[1] - 1]]
-        const passantSquare = [piece.coord[0] - piece.direction, piece.coord[1]];
-        neighborPieces.forEach(p => {
-          if (p instanceof Pawn && p.color !== piece.color){
-            p.enPassant = {passantSquare: passantSquare, capturePawn: piece, validTurn: this.#history.length};
+        const neighborPieces = [
+          this.position[target[0]][target[1] + 1],
+          this.position[target[0]][target[1] - 1],
+        ];
+        const passantSquare = [
+          piece.coord[0] - piece.direction,
+          piece.coord[1],
+        ];
+        neighborPieces.forEach((p) => {
+          if (p instanceof Pawn && p.color !== piece.color) {
+            p.enPassant = {
+              passantSquare: passantSquare,
+              capturePawn: piece,
+              validTurn: this.#history.length,
+            };
           }
-        })
+        });
       }
     }
     return this;
