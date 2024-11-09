@@ -1,4 +1,5 @@
 import Board from "./board";
+import Chess from "./chess";
 
 class Piece {
     #color;
@@ -74,43 +75,40 @@ class Piece {
   
 export class Pawn extends Piece {
     name = "pawn";
-    canEnPassant = null;
+    enPassant = null;
+    direction;
     constructor(color, coord) {
       super(color, coord);
       this.short = color === "white" ? "P" : "p";
+      this.direction = this.color === "white" ? 1 : -1;
+    }
+
+    set enPassant(enPassant) {
+      this.enPassant = enPassant;
     }
   
     moves(position) {
       const [rank, file] = this.coord;
-      const direction = this.color === "white" ? 1 : -1;
       const moves = [];
-      if (position[rank + direction][file] === null) {
-        moves.push([rank + direction, file]);
+      if (position[rank + this.direction][file] === null) {
+        moves.push([rank + this.direction, file]);
       }
-      if (!this.hasMoved && position[rank + direction * 2][file] === null) {
-        moves.push([rank + direction * 2, file]);
+      if (!this.hasMoved && position[rank + this.direction * 2][file] === null) {
+        moves.push([rank + this.direction * 2, file]);
       }
   
       const [capture1, capture2] = [
-        position[rank + direction][file + 1],
-        position[rank + direction][file - 1],
+        position[rank + this.direction][file + 1],
+        position[rank + this.direction][file - 1],
       ];
   
       if (capture1 && capture1.color !== this.color) {
-        moves.push([rank + direction, file + 1]);
+        moves.push([rank + this.direction, file + 1]);
       }
       if (capture2 && capture2.color !== this.color) {
-        moves.push([rank + direction, file - 1]);
+        moves.push([rank + this.direction, file - 1]);
       }
       return moves;
-    }
-  
-    move(target) {
-      this.hasMoved = true;
-      this.coord = target;
-    //   if (Math.abs(target[0] - this.coord[0]) === 2){
-    //     passantSquare1 = 
-    //   }
     }
 }
   
