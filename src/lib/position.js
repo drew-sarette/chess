@@ -1,6 +1,7 @@
 import { Pawn, Rook, Bishop, Knight, Queen, King } from "./pieces";
 
-export default class Board {
+export default class Position {
+    ranks;
     // prettier-ignore
     static #notationBoard = [
       ["a1", "b1", "c1", "d1", "e1", "f1", "g1", "h1"], // 0
@@ -39,11 +40,7 @@ export default class Board {
       [[0, 7], [1, 7], [2, 7], [3, 7], [4, 7], [5, 7], [6, 7], [7, 7],], // h
       // 1        2       3       4       5       6       7       8
     ];
-  
-    static get coords() {
-      return this.#coords.slice();
-    }
-  
+
     // prettier-ignore
     static #startPosition = [
       ["R", "N", "B", "Q", "K", "B", "N", "R"],
@@ -56,13 +53,12 @@ export default class Board {
       ["r", "n", "b", "q", "k", "b", "n", "r"],
     ];
   
-    static setBoard(position = Board.#startPosition) {
-      const result = this.coords.map((rank) => {
-        return rank.map((coord) => {
-          const short = position[coord[0]][coord[1]];
-          let piece = null;
+    constructor(position = Position.#startPosition) {
+      this.ranks = position.map((rank, i) => rank.map((short, j) => {
+        let piece = null;
           if (short) {
             const color = short.toUpperCase() === short ? "white" : "black";
+            const coord = [i, j];
             switch (short.toUpperCase()) {
               case "P":
                 piece = new Pawn(color, coord);
@@ -85,9 +81,33 @@ export default class Board {
             }
           }
           return piece;
-        });
+      }));
+    }
+
+    getSquare(coord) {
+      return this.ranks[coord[0]][coord[1]];
+    }
+
+    setSquare(coord, content) {
+      // console.log("coord: " + coord);
+      // console.log("content: " + content)
+      this.ranks[coord[0]][coord[1]] = content;
+    }
+
+    setSquares(arr) {
+      console.log(arr);
+      arr.forEach(elem => {
+        const [coord, content] = elem;
+        this.setSquare(coord, content);
       });
-      return result;
+    }
+
+    outputShorts() {
+      return this.ranks.map(rank => rank.map(contents => contents ? contents.short : null));
+    }
+
+    isValid(){
+      return true;
     }
   
     // Takes a starting square, a direction, and a desired depth, and returns all squares on the board in that direction.

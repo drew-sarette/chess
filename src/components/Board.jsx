@@ -3,13 +3,13 @@ import { useState } from "react";
 import clsx from "clsx";
 
 function Board({ game, handleMove }) {
-  const position = game.position;
+  const position = game.current;
   const player = game.whosNext;
   const [selected, setSelected] = useState([null, null]);
 
   const squareClick = (coord) => {
     // No square selected, empty square clicked
-    if (position[coord[0]][coord[1]] === null && selected[0] === null) {
+    if (position.getSquare(coord) === null && selected[0] === null) {
       return;
     }
     // Selected square was clicked
@@ -19,7 +19,7 @@ function Board({ game, handleMove }) {
     }
     // No square selected, check if square can be selected
     if (selected[0] === null) {
-      const piece = position[coord[0]][coord[1]];
+      const piece = position.getSquare(coord);
       if (piece && piece.color === player) {
         setSelected(coord);
       }
@@ -52,7 +52,7 @@ function Board({ game, handleMove }) {
               key={`${rank}${file}`}
               coord={[rank, file]}
               selected={selected[0] === rank && selected[1] === file}
-              piece={position[rank][file]}
+              piece={position.getSquare([rank, file])}
               onClick={() => squareClick([rank, file])}
             />
           ))}
